@@ -1,0 +1,5 @@
+const doSomething = (value) => ({
+  then(callback) {
+    callback(value)
+  }
+})

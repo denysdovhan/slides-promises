@@ -1,0 +1,28 @@
+function Promise(fn) {
+  let state = 'pending'                          // початковий стан
+  let deferred                                   // відкладена фунція
+  let value                                      // результат виконання
+
+  function handle(onResolved) {                  // спільна логіка
+    if (state == 'pending') {                    // якщо виконавець ще виконується,
+      deferred = onResolved                      // то відкладаємо функцію на потім
+      return
+    }
+    onResolved(value)                            // інакше, виконуємо обробник завершення
+  }
+
+  function resolve(newValue) {
+    state = 'resolved'                           // змінюємо стан
+    value = newValue                             // зберігаємо отримане значення
+
+    if (deferred) {
+      handle(deferred)                           // якщо є відкладений виклик, опрацьовуємо його
+    }
+  }
+
+  this.then = function (onResolved) {
+    handle(onResolved)                           // опрацьовуємо обробник завершення
+  }
+
+  fn(resolve)                                    // запускаємо функцію–виконавця
+}

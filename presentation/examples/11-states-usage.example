@@ -1,0 +1,13 @@
+function doSomething(value) {
+  return new Promise(resolve => {
+    resolve(value)
+  })
+}
+
+// ---
+
+const promise = doSomething(27)
+
+// значення зберігається
+promise.then(res => console.log(res)) // 27
+promise.then(res => console.log(res)) // 27

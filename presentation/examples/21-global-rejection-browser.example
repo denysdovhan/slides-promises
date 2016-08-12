@@ -1,0 +1,21 @@
+// мапа необроблених відхилень
+const unhandled = new Map();
+
+// додаємо необроблене відхилення його в мапу
+window.onunhandledrejection = (event) => {
+  unhandled.set(event.promise, event.reason);
+};
+
+// видаляємо оброблене відхилення з мапи
+window.rejectionhandled = (event) => {
+  unhandled.delete(event.promise);
+};
+
+setInterval(() => {
+  unhandled.forEach((reason, promise) => {
+    // обробляємо відхилені проміси.
+    // наприклад:
+    promise.catch(reason => console.error('Handled:', reason))
+  });
+  unhandled.clear();
+}, 1000 * 60);
