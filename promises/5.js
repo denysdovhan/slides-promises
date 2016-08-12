@@ -73,6 +73,10 @@ function Promise(fn) {
     })
   }
 
+  this.catch = function (onRejected) {
+    this.then(null, onRejected)
+  }
+
   fn(resolve, reject)
 }
 

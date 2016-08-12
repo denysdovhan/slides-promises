@@ -57,6 +57,7 @@ function doSomething(value) {
 }
 
 doSomething(0)
+  .then()
   .then(res => [res])
   // add some values
   .then(res => res.concat(1))
@@ -67,11 +68,3 @@ doSomething(0)
   .then(res => console.log(res)) // []
   // nothing was passed next
   .then(res => console.log(res)) // undefined
-
-// Callback is not strictly required in then()
-// ---
-console.log('---');
-
-doSomething(27)
-  .then()
-  .then(res => console.log(res))

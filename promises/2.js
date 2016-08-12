@@ -26,5 +26,5 @@ function doSomething (value) {
   })
 }
 
-doSomething(27)
-  .then(res => console.log(res))
+const p = doSomething(27)
+p.then(res => console.log(res))

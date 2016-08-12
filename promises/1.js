@@ -12,5 +12,6 @@ function doSomething(value) {
 
 // --- --- --- --- --- --- --- --- --- --- ---
 
-doSomething(27)
-  .then(res => console.log(res)) // 27
+const promise = doSomething(27)
+
+promise.then(res => console.log(res)) // 27
