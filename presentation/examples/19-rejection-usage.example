@@ -6,11 +6,11 @@ function doSomething(value) {
 
 // ---
 
-doSomething(-1)
+doSomething(27)
   .then(value => {
     console.log('Result:', value)        // ніколи не викличеться
   }, reason => {
-    console.error('Error:', reason)      // 1
+    console.error('Error:', reason)      // 27
     return 'recovered!'                  // відновлюємо проміс
   })
   .then(value => {

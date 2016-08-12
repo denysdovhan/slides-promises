@@ -143,7 +143,7 @@ export default class Presentation extends React.Component {
             <Heading fit textColor="secondary">.then</Heading>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="doSomething() повертає проміс. <br> Ми можемо з ним щось зробити і обробити результат згодом. <br> .then() приймає в якості аргументу фунцію–обробник результату.">
             <CodePane
               lang="js"
               textSize="1em"
@@ -151,18 +151,18 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide notes="Всі проміси мають об’єкт `then()`, проте не всі об’єкти, що мають метод `then()`, є промісами.">
+          <Slide notes="Всі проміси мають метод `then()`, проте не всі об’єкти, що мають метод `then()`, є промісами. У своїй доповіді я буду реалізовувати промісоподібні.">
             <Text>
-              <strong>Проміси (Promises)</strong> — об’єкти, поведінка яких відповідає специфікації <Link href="" textColor="secondary">Promise/A+</Link>
+              <strong>Проміси (Promises)</strong> — об’єкти, поведінка яких відповідає специфікації <Link href="" textColor="secondary">Promise/A+.</Link>
             </Text>
             <Appear>
               <Text margin="1em auto 0">
-                <strong>Промісоподібні (Thenables)</strong> — об’єкти, які мають метод <Code>.then</Code>
+                <strong>Промісоподібні (Thenables)</strong> — об’єкти, які мають метод <Code>.then</Code>.
               </Text>
             </Appear>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Демістифікуємо doSomething(). Можна повернути просто об’єкт з властивістю .then().">
             <CodePane
               lang="js"
               textSize="1em"
@@ -170,53 +170,45 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide bgColor="secondary">
-            <CodePane
-              lang="js"
-              textSize="1em"
-              source={require("raw!./examples/6-thenable-arrow.example")}
-            />
-          </Slide>
-
-          <Slide>
+          <Slide notes="Нам потрібен контуктор у який можна передати функцію, яка описуватиме асинхронну операцію.">
             <Heading size={2}>Конструктор</Heading>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="fn — функція–виконавець. then — зберігає обробник завершення. resolve — передає значення у цей обробник.">
             <CodePane
               lang="js"
               textSize=".75em"
-              source={require("raw!./examples/7-constructor.example")}
+              source={require("raw!./examples/6-constructor.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Використати можна ось так. Здається має працювати, але не працює. Яка тут є помилка?">
             <CodePane
               lang="js"
               textSize=".75em"
-              source={require("raw!./examples/8-constructor-usage.example")}
+              source={require("raw!./examples/7-constructor-usage.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="setTimeout() відкладає виклик на наступний прохід циклу подій. <br> Але таке рішення легко зламати асинхронним викликом .then().">
             <CodePane
               lang="js"
               textSize=".75em"
-              source={require("raw!./examples/9-constructor-fixed.example")}
+              source={require("raw!./examples/8-constructor-fixed.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes=".then() можна викликати до завершення операції. І навпаки.">
             <Text bold>
               .then() та resolve() викликаються незалежно
             </Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Проміси є дуже спрощеним прикладом машин станів, які переходять зі стану в стан під дією сигналів. В нашому випадку — викликів фунцій завершення.">
             <Heading size={2}>Проміси мають стан</Heading>
           </Slide>
 
-          <Slide>
+          <Slide notes="Більшість промісів проживають короткий життєвий цикл.  ">
             <Text margin="0 auto 1em">
               [[PromiseState]]
             </Text>
@@ -233,127 +225,127 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Змінні → fn → resolve → then → handle">
             <CodePane
               lang="js"
               textSize=".45em"
-              source={require("raw!./examples/10-states.example")}
+              source={require("raw!./examples/9-states.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary" notes="Насправді всі ці обробники зберігаються і виконуються в порядку їх визначенння.">
+          <Slide bgColor="secondary" notes="Значення промісу зберігається. Він не переходить зі стану в стан. <br> Насправді всі ці обробники зберігаються і виконуються в порядку їх визначенння.">
             <CodePane
               lang="js"
               textSize=".75em"
-              source={require("raw!./examples/11-states-usage.example")}
+              source={require("raw!./examples/10-states-usage.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Тобто два сусідні проміси пов’язані між собою.">
             <Text bold>.then() завжди повертає новий проміс</Text>
             <Text margin=".5em auto 0">І цей новий проміс вирішується тоді, коли попередній був або завершений, або відхилений.</Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Якщо пропустити обробник, результат передасться у обробник завершення наступного проміса.">
             <Text bold>.then() може не мати обробника</Text>
             <Text margin=".5em auto 0">Тоді результат передається у наступний проміс.</Text>
           </Slide>
 
-          <Slide>
-            <Text bold>Якщо повернути значення з .then(), воно буде значенням наступного проміса</Text>
+          <Slide notes="Так ми можемо об’єднувати їх у ланцюжки. Чого не можна зробити з колбеками.">
+            <Text bold>Якщо повернути значення з обробника в .then(), воно буде значенням наступного проміса</Text>
             <Text margin=".5em auto 0">Тоді можна передавати дані від одного проміса до наступного.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="then повертає проміс → resolve залишається незмінним → handle <br> Проміси пов’язані один з одним.">
             <CodePane
               lang="js"
               textSize=".4em"
-              source={require("raw!./examples/12-return-promise.example")}
+              source={require("raw!./examples/11-return-promise.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Чітко видно, як проміси пов’язані один з одним. <br> Значення передається від одного до іншого.">
             <CodePane
               lang="js"
               textSize=".7em"
-              source={require("raw!./examples/13-return-promise-usage.example")}
+              source={require("raw!./examples/12-return-promise-usage.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Виходить, що цей проміс буде значенням, яке потрапить у обробник завершення наступного проміса.">
             <Heading size={2}>Що якщо повернути з .then() проміс?</Heading>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Виходить, що нам потрібно вирішувати проміс. Важче дістати значення.">
             <CodePane
               lang="js"
               textSize=".7em"
-              source={require("raw!./examples/14-if-promise-hell.example")}
+              source={require("raw!./examples/13-if-promise-hell.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Значення огортається у проміс і передається у наступний обробник завершення.">
             <Text bold>Якщо повернути проміс з .then(), він вирішиться</Text>
             <Text margin=".5em auto 0">Результат буде обгорнутий у новий проміс та буде доступним у наступному .then()</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Якщо значення є промісом, вирішуємо його, рекурсивно передавши фунцію завершення у then().">
             <CodePane
               lang="js"
               textSize=".6em"
-              source={require("raw!./examples/15-if-promise.example")}
+              source={require("raw!./examples/14-if-promise.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Проміси вирішуються, а значення передаються від обробника до обробника. Код виглядає достатньо плоско.">
             <CodePane
               lang="js"
               textSize=".7em"
-              source={require("raw!./examples/16-if-promise-usage.example")}
+              source={require("raw!./examples/15-if-promise-usage.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Як обробляти помилки? Ми згадували про стан «rejected».">
             <Heading size={2}>Обробка помилок</Heading>
           </Slide>
 
-          <Slide>
+          <Slide notes="Від обіцянки потрібно «відмазатись» з причиною.">
             <Text bold>Проміси можна відхилити (reject) з причиною (reason)</Text>
             <Text margin=".5em auto 0">В якості другого аргументу виконавець отримує функцію, що відхиляє проміс.</Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Обидва є необов’язковими і їх можна упускати." >
             <Text bold>.then() приймає обробник відхилення в якості другого аргумента</Text>
             <Text margin=".5em auto 0">І обробник завершення, і обробник відхилення є опціональними.</Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Всі властивості, які застосовуються до then() спрацьовують з catch().">
             <Text bold>.catch() приймає лише обробник відхилення</Text>
             <Text margin=".5em auto 0">.catch() аналогічний до .then() без обробника завершення.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="catch() є зручник скороченням для then().">
             <CodePane
               lang="js"
               textSize=".7em"
-              source={require("raw!./examples/17-catch.example")}
+              source={require("raw!./examples/16-catch.example")}
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Якщо щось піде не так у певній послідовності дій, ми можемо все полагодити і продовжити виконання.">
             <Text bold>Проміси вміють «відновлюватись»</Text>
             <Text margin=".5em auto 0">Якщо повернути значення з обробника відхилення, воно потрапить в обробник завершення наступного проміса.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="reject → then → catch">
             <CodePane
               lang="js"
               textSize=".45em"
-              source={require("raw!./examples/18-rejection-reject.example")}
+              source={require("raw!./examples/17-rejection-reject.example")}
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Визначаємо який обробник треба викликати. Перевіряємо чи обробник є. Передаємо значення до наступного проміса.">
             <CodePane
               lang="js"
               textSize=".4em"
@@ -361,7 +353,7 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Пояснити значення у обробниках.">
             <CodePane
               lang="js"
               textSize=".6em"
@@ -369,7 +361,7 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide transition={[]} bgImage={images.hard.replace("/", "")} bgDarken={0.6}>
+          <Slide transition={[]} bgImage={images.hard.replace("/", "")} bgDarken={0.6} notes="Можна ще додати обробку помилок у виконавцеві та в промісах.">
             <Text caps fit textColor="white">Надто складно!</Text>
           </Slide>
 
@@ -377,12 +369,12 @@ export default class Presentation extends React.Component {
             <Heading size={2}>Глобальна обробка відхилення</Heading>
           </Slide>
 
-          <Slide>
+          <Slide notes="Це єдина частина специфікації, яка не повідомляє про свої помилки.">
             <Text bold>Проміси «падають тихо»</Text>
             <Text margin=".5em auto 0">Якщо помилка стається у промісі, який не має обробника відхилення, проміс «промовчить» про цю помилку.</Text>
           </Slide>
 
-          <Slide>
+          <Slide notes="Можливо колись у майбутньому це стане частиною специфікації.">
             <Text bold>Оточення довзоляють ловити необроблені відхилення</Text>
             <Text margin=".5em auto 0">Це можливості надаються лише оточеннями і не є частиною специфікації.</Text>
           </Slide>
@@ -396,7 +388,7 @@ export default class Presentation extends React.Component {
             </List>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Обробник необроблених відхилень.і">
             <CodePane
               lang="js"
               textSize=".55em"
@@ -414,7 +406,7 @@ export default class Presentation extends React.Component {
             <Text margin=".5em auto 0" textAlign="left">В якості аргументу отримують об’єкт події з полями: type, promise, reason.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Аналогічний код для браузерів.">
             <CodePane
               lang="js"
               textSize=".55em"
@@ -422,11 +414,11 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Можна створити проміси, які вже перебувають у завершеному стані.">
             <Heading size={2}>Створення встановлених промісів</Heading>
           </Slide>
 
-          <Slide>
+          <Slide notes="Якщо передати їм проміс, то вони повернуть його без змін.">
             <Text bold>Promise.resolve() та Promise.reject() дозволяють створити встановлений проміс</Text>
             <Text margin=".5em auto 0">Вони можуть приймати примітиви в якості аргумента та огортати їх в проміс.</Text>
           </Slide>
@@ -444,7 +436,7 @@ export default class Presentation extends React.Component {
             <Text margin=".5em auto 0">Вони можуть перетворювати промісоподібні у справжні проміси.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Промісомподібний конвертується у справжній проміс.">
             <CodePane
               lang="js"
               textSize=".75em"
@@ -452,11 +444,11 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide>
+          <Slide notes="Можна обробляти значення групи промісів за раз.">
             <Heading size={2}>Робота з групами промісів</Heading>
           </Slide>
 
-          <Slide>
+          <Slide notes="Приймає в якості аргумента ітерабельний об’єкт.">
             <Text bold>Promise.all() очікує на завершення всіх промісів</Text>
             <Text margin=".5em auto 0">Повертає новий проміс, який завершується тоді, коли завершуються всі проміси.</Text>
           </Slide>
@@ -474,7 +466,7 @@ export default class Presentation extends React.Component {
             <Text margin=".5em auto 0">Повертає новий проміс, який завершується тоді, коли завершуються найшвидший проміс.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Тим не менше, всі проміси завершується, просто race вже не чекає на них.">
             <CodePane
               lang="js"
               textSize=".75em"
@@ -491,7 +483,7 @@ export default class Presentation extends React.Component {
             <Text margin=".5em auto 0">Завдяки Symbol.species успадковані методи повертатимуть екземпляр нового класу.</Text>
           </Slide>
 
-          <Slide bgColor="secondary">
+          <Slide bgColor="secondary" notes="Методи success() та failure() повертають проміси BetterPromise().">
             <CodePane
               lang="js"
               textSize=".55em"
@@ -535,8 +527,19 @@ export default class Presentation extends React.Component {
           <Slide>
             <Text bold>Матеріали</Text>
             <List>
-              <Appear><ListItem>...</ListItem></Appear>
+              <ListItem><Link textColor="secondary" href="https://promisesaplus.com/">Promise/A+</Link></ListItem>
+              <ListItem><Link textColor="secondary" href="https://www.promisejs.org/">promisejs.org</Link></ListItem>
+              <ListItem><Link textColor="secondary" href="https://www.promisejs.org/generators/">Generators and Promises</Link></ListItem>
+              <ListItem><Link textColor="secondary" href="https://github.com/denysdovhan/understandinges6ua/pull/12">Розуміння ES6 — Проміси</Link></ListItem>
             </List>
+          </Slide>
+
+          <Slide>
+            <Heading size={1}>Питання?</Heading>
+          </Slide>
+
+          <Slide>
+            <Heading size={1}>Дякую за увагу!</Heading>
           </Slide>
 
         </Deck>
