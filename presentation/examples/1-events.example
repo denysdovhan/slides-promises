@@ -1,3 +1,0 @@
-const btn = document.getElementById("btn")
-
-btn.onclick = (event) => console.log(event)
