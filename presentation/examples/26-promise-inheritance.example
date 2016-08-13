@@ -1,0 +1,21 @@
+class BetterPromise extends Promise {
+
+  success(resolve, reject) {
+    return this.then(resolve, reject)
+  }
+
+  failure(reject) {
+    return this.catch(reject)
+  }
+
+}
+
+// ---
+
+const promise = new BetterPromise((resolve, reject) => {
+  resolve(27)
+})
+
+promise
+  .success(value  => console.log(value))       // 27
+  .failure(reason => console.error(reason))

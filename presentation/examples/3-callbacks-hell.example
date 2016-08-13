@@ -1,0 +1,17 @@
+import { readFile } from 'fs'
+
+const err = (e) => { throw e }
+
+readFile('file1', (e, f1) => e ? err(e) :
+  readFile('file2', (e, f2) => e ? err(e) :
+    readFile('file3', (e, f3) => e ? err(e) :
+      readFile('file4', (e, f4) => e ? err(e) :
+        readFile('file5', (e, f5) => e ? err(e) :
+          readFile('file6', (e, f6) => e ? err(e) :
+            console.log(f1, f2, f3, f4, f5, f6)
+          )
+        )
+      )
+    )
+  )
+)

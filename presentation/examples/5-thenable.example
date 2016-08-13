@@ -1,0 +1,7 @@
+function doSomething(value) {
+  return {
+    then: function (callback) {
+      callback(value)
+    }
+  }
+}

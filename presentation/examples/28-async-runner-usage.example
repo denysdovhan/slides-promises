@@ -1,0 +1,4 @@
+async(function* () {
+  const contents = yield readFile('config.json');
+  console.log(contents);
+});

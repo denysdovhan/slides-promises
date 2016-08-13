@@ -1,0 +1,28 @@
+function Promise(fn) {
+  // ...
+
+  function handle(handler) {
+    if (state == 'pending') {
+      deferred = handler
+      return
+    }
+
+    const handlerCallback = state == 'resolved' ? handler.onResolved : handler.onRejected;
+
+    if (!handlerCallback) {
+      if (status == 'resolved') {
+        handler.resolve(value)
+      } else {
+        handler.reject(value)
+      }
+      return
+    }
+
+    const next = handlerCallback(value)
+    handler.resolve(next)
+  }
+
+  // ...
+
+  fn(resolve, reject)
+}

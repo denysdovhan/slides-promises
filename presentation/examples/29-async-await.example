@@ -1,0 +1,4 @@
+(async function () {
+  const contents = await readFile('config.json');
+  console.log(contents);
+});

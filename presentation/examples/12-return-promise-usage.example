@@ -1,0 +1,16 @@
+function doSomething(value) {
+  return new Promise(resolve => {
+    resolve(value)
+  })
+}
+
+// ---
+
+doSomething(0)
+  .then()                         // обробник не обов’язковий
+  .then(res => [res])             // перетворюємо результат у масив
+  .then(res => res.concat(1))     // додаємо 1
+  .then(res => res.concat(2))     // додаємо 2
+  .then(res => res.concat(3))     // додаємо 3
+  .then(res => console.log(res))  // [ 0, 1, 2, 3 ]
+  .then(res => console.log(res))  // undefined

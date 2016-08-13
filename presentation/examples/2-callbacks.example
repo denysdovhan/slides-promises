@@ -1,0 +1,10 @@
+import { readFile } from 'fs'
+
+readFile('file.txt', (err, contents) => {
+    if (err) {
+        throw err
+    }
+    console.log(contents)
+});
+
+console.log("Hi!")
