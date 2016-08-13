@@ -535,11 +535,12 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide>
-            <Heading size={1}>Питання?</Heading>
+            <Heading size={1} textColor="secondary">Питання?</Heading>
           </Slide>
 
           <Slide>
-            <Heading size={1}>Дякую за увагу!</Heading>
+            <Heading size={1} textColor="secondary">Дякую за увагу!</Heading>
+            <Text margin="1em auto 0">@denysdovhan</Text>
           </Slide>
 
         </Deck>
