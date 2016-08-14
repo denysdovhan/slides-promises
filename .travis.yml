@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+- v6
+before_script:
+- git config --global user.email "email@denysdovhan.com"
+- git config --global user.name "Travis Builder"
+- git remote rm origin
+- git remote add origin https://denysdovhan:${GH_TOKEN}@github.com/denysdovhan/slides-promises.git
+script:
+- npm run deploy
+env:
+  global:
+    secure: hL60FJZQXGalFptDyOEjoYTl7GZpE7jJsCI/Ut1nSQ1JOatRLszX/CCjrbNWbicfJUmbPHVkblqDcXcWosDxwKj1XiDxaf1YPRLjpz/bVZment4TwJy+5mGf+ocgpzg6wLO6cdQgKMDtFQNmbKIELgF1d91/2eUgPpstCRdHy3/dafOx7plYx9vAUC/V0+X91q2qSNF32ySm4ItCGVXiIVVZmZWLAeJedYo0WifwGVDg5HJcwFa5e8RZlvnKVDFRtGOkBydIVnnrQAyrlGsVAMK8quvEkvdvPaJSHmWkFaTpRX85BtuRcSVRATb5i8+3Olmum345VJxqaS9Bu5xKcm0Ak9XTkzQZffSDZMS8ZV83UKERhG5gWaL/6CYf6ySnV3UQMk1DZY3XjPeqhwhz11PWsRpj9ILHH7Joq4bdwKyvwcAAlqnfbFNtib2S9zsoNg2MTqala22RDOZjiTIFmO9pnLvgLJWL5H7gVtTPSboRM0cTyYdlsrYVBn+6usXQTyGx/uH/G9mtLFvPxObmZak0HEDnRvHxcWpx1VE1UjKqbyFVzPrIsBQyyUHYnh+k/W2z3miJZykIUxA0m5ojIyuRe3IF8Ay3PKzCFBuXE0rAJHJvJjAn5MY4VEOdFmuXybfAYozTg79hUs4AXLhQqk6P4F6PrNelBxSFJ06TAfw=
