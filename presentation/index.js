@@ -23,6 +23,7 @@ import {
   Spectacle,
   Text
 } from "spectacle";
+import DemoLink from "./DemoLink";
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -113,7 +114,7 @@ export default class Presentation extends React.Component {
             <Text caps fit textColor="primary">Callback Hell</Text>
           </Slide>
 
-          <Slide transition={"slide"} notes="" bgColor="secondary">
+          <Slide transition={["slide"]} notes="" bgColor="secondary">
             <CodePane
               lang="js"
               textSize="0.6em"
@@ -168,6 +169,7 @@ export default class Presentation extends React.Component {
               textSize="1em"
               source={require("raw!./examples/5-thenable.example")}
             />
+            <DemoLink href="1-naiive.js" />
           </Slide>
 
           <Slide notes="Нам потрібен контуктор у який можна передати функцію, яка описуватиме асинхронну операцію.">
@@ -188,6 +190,7 @@ export default class Presentation extends React.Component {
               textSize=".75em"
               source={require("raw!./examples/7-constructor-usage.example")}
             />
+            <DemoLink href="2-constructor.js" />
           </Slide>
 
           <Slide bgColor="secondary" notes="setTimeout() відкладає виклик на наступний прохід циклу подій. <br> Але таке рішення легко зламати асинхронним викликом .then().">
@@ -239,6 +242,7 @@ export default class Presentation extends React.Component {
               textSize=".75em"
               source={require("raw!./examples/10-states-usage.example")}
             />
+            <DemoLink href="3-states.js" />
           </Slide>
 
           <Slide notes="Тобто два сусідні проміси пов’язані між собою.">
@@ -270,6 +274,7 @@ export default class Presentation extends React.Component {
               textSize=".7em"
               source={require("raw!./examples/12-return-promise-usage.example")}
             />
+            <DemoLink href="4-then.js" />
           </Slide>
 
           <Slide notes="Виходить, що цей проміс буде значенням, яке потрапить у обробник завершення наступного проміса.">
@@ -343,6 +348,7 @@ export default class Presentation extends React.Component {
               textSize=".45em"
               source={require("raw!./examples/17-rejection-reject.example")}
             />
+            <DemoLink href="5-rejection.js" />
           </Slide>
 
           <Slide bgColor="secondary" notes="Визначаємо який обробник треба викликати. Перевіряємо чи обробник є. Передаємо значення до наступного проміса.">
@@ -353,12 +359,15 @@ export default class Presentation extends React.Component {
             />
           </Slide>
 
-          <Slide bgColor="secondary" notes="Пояснити значення у обробниках.">
+          <Slide bgColor="secondary" notes="Пояснити значення у обробниках." textColor="primary">
             <CodePane
               lang="js"
               textSize=".6em"
               source={require("raw!./examples/19-rejection-usage.example")}
             />
+            <DemoLink href="5-rejection.js">Демо 1</DemoLink>
+            {" – "}
+            <DemoLink href="6-executors-errors.js">Демо 2</DemoLink>
           </Slide>
 
           <Slide transition={[]} bgImage={images.hard.replace("/", "")} bgDarken={0.6} notes="Можна ще додати обробку помилок у виконавцеві та в промісах.">
@@ -394,6 +403,7 @@ export default class Presentation extends React.Component {
               textSize=".55em"
               source={require("raw!./examples/20-global-rejection-nodejs.example")}
             />
+            <DemoLink href="7-unhandled-promises.js" />
           </Slide>
 
           <Slide>
@@ -514,6 +524,7 @@ export default class Presentation extends React.Component {
               textSize=".9em"
               source={require("raw!./examples/28-async-runner-usage.example")}
             />
+            <DemoLink href="8-async-runner.js" />
           </Slide>
 
           <Slide bgColor="secondary">
@@ -540,7 +551,9 @@ export default class Presentation extends React.Component {
 
           <Slide>
             <Heading size={1} textColor="secondary">Дякую за увагу!</Heading>
-            <Text margin="1em auto 0">@denysdovhan</Text>
+            <Text margin="1em auto 0">
+              <Link href="https://twitter.com/denysdovhan">@denysdovhan</Link>
+            </Text>
           </Slide>
 
         </Deck>
