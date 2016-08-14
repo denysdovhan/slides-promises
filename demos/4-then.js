@@ -57,14 +57,10 @@ function doSomething(value) {
 }
 
 doSomething(0)
-  .then()
-  .then(res => [res])
-  // add some values
-  .then(res => res.concat(1))
-  .then(res => res.concat(2))
-  .then(res => res.concat(3))
-  .then(res => res.concat(4))
-  // output result
-  .then(res => console.log(res)) // []
-  // nothing was passed next
-  .then(res => console.log(res)) // undefined
+  .then()                         // handler is not necessary
+  .then(res => [res])             // turn into array
+  .then(res => res.concat(1))     // add 1
+  .then(res => res.concat(2))     // add 2
+  .then(res => res.concat(3))     // add 3
+  .then(res => console.log(res))  // [ 0, 1, 2, 3 ]
+  .then(res => console.log(res))  // undefined
