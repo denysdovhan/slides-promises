@@ -10,19 +10,19 @@ import {
   CodePane,
   Deck,
   Fill,
-  Fit,
   Heading,
   Image,
   Layout,
   Link,
   ListItem,
   List,
-  Markdown,
   Quote,
   Slide,
   Spectacle,
   Text
 } from "spectacle";
+
+// Import custom components
 import DemoLink from "./DemoLink";
 
 // Import image preloader util
@@ -552,7 +552,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={1} textColor="secondary">Дякую за увагу!</Heading>
             <Text margin="1em auto 0">
-              <Link href="https://twitter.com/denysdovhan">@denysdovhan</Link>
+              <Link textColor="secondary" href="https://twitter.com/denysdovhan">@denysdovhan</Link>
             </Text>
           </Slide>
 
