@@ -8,7 +8,7 @@
     "clean": "rimraf dist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js",
     "lint": "eslint --ext .js,.jsx .",
-    "deploy": "npm run clean & npm run build && gh-pages -d dist -m \"Updated at $(date +'%a, %d %b %Y, %T, %Z')\" --add",
+    "deploy": "npm run clean & npm run build && gh-pages -d . -m \"Updated at $(date +'%a, %d %b %Y, %T, %Z')\" --add",
     "start": "cross-env NODE_ENV=development node server.js"
   },
   "author": "Denys Dovhan <email@denysdovhan.com> (http://denysdovhan.com)",
