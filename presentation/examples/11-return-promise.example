@@ -1,0 +1,30 @@
+function Promise(fn) {
+  let state = 'pending'
+  let deferred
+  let value
+
+  function handle(handler) {                    // приймаємо об’єкт–обробник
+    if (state == 'pending') {
+      deferred = handler
+      return
+    }
+
+    if (!handler.onResolved) {                  // якщо поточний проміс не має обробника
+      handler.resolve(value)                    // тоді передаємо керування до обробника наступного
+      return
+    }
+
+    const next = handler.onResolved(value)      // зберігаємо значення, яке повертається з обробника поточного проміса
+    handler.resolve(next)                       // передаємо це значення у обробник наступного проміса
+  }
+
+  function resolve(newValue) { ... }
+
+  this.then = function (onResolved) {
+    return new Promise(resolve => {             // .then() повертає новий проміс
+      handle({ onResolved, resolve })           // який опрацьовує об’єкт, що захоплює обробники обох промісів
+    })
+  }
+
+  fn(resolve)
+}

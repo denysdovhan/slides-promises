@@ -1,0 +1,13 @@
+doSomething(1)
+  .then(value => {
+    console.log(value)         // 1
+    return doSomething(2)      // повертаємо проміс
+  })
+  .then(value => {
+    console.log(value)         // 2
+    return doSomething(3)      // повертаємо проміс
+  })
+  .then(value => {
+    console.log(value)         // 3
+    // ...
+  });

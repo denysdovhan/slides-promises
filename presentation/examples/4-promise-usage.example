@@ -1,0 +1,9 @@
+// функція повертає проміс
+const promise = doSomething(27)
+
+// ...
+
+// обробляємо результат
+promise.then(value => {
+  console.log(value) // 27
+})

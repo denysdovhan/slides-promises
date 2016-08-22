@@ -1,0 +1,9 @@
+const p1 = Promise.resolve('hey');
+const p2 = new Promise((resolve, reject) => resolve('ho'));
+const p3 = new Promise((resolve, reject) => resolve('let`s go!'));
+
+const p4 = Promise.race([p1, p2, p3])
+
+p4.then(value => {
+  console.log(value);    // 'hey'
+})

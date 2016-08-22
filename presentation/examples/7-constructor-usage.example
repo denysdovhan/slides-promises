@@ -1,0 +1,10 @@
+function doSomething(value) {
+  return new Promise(resolve => {
+    resolve(value)
+  })
+}
+
+// ---
+
+doSomething(27)
+  .then(res => console.log(res)) // 27

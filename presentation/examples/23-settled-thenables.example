@@ -1,0 +1,11 @@
+// промісоподібний об’єкт
+const thenable = {
+  then: (resolve, reject) => {
+    resolve(27)
+  }
+}
+
+// конвертуємо у проміс
+const promise = Promise.resolve(thenable)
+
+promise.then(value => console.log(value))    // 27

@@ -1,0 +1,12 @@
+const p1 = Promise.resolve('hey')
+const p2 = Promise.resolve('ho')
+const p3 = Promise.resolve('let`s go!')
+
+const p4 = Promise.all([p1, p2, p3])
+
+p4.then(values => {
+  console.log(Array.isArray(values))      // true
+  console.log(values[0])                  // 'hey'
+  console.log(values[1])                  // 'ho'
+  console.log(values[2])                  // 'let`s go!'
+})

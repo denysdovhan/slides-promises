@@ -1,0 +1,20 @@
+function Promise(fn) {
+  let state = 'pending'
+  let deferred
+  let value
+
+  function handle(handler) { ... }
+
+  function resolve(newValue) {
+    if (newValue && typeof newValue.then == 'function') {  // якщо проміс
+      newValue.then(resolve)                               // вирішуємо його
+      return
+    }
+
+    // ...
+  }
+
+  this.then = function (onResolved) { ... }
+
+  fn(resolve)
+}

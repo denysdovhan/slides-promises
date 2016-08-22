@@ -1,0 +1,13 @@
+function Promise(fn) {
+  let callback = null
+
+  function resolve(value) {
+    callback(value)
+  }
+
+  this.then = function (cb) {
+    callback = cb
+  }
+
+  fn(resolve)
+}

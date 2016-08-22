@@ -1,0 +1,9 @@
+const resolved = Promise.resolve(27);
+
+resolved.then(value => console.log(value))         // 27
+
+// ...
+
+const rejected = Promise.rejected('Boom!');
+
+resolved.catch(reason => console.error(reason))    // 'Boom!'

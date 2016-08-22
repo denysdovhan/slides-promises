@@ -1,0 +1,14 @@
+const promise = new Promise((resolve, reject) => {
+  reject('error!')
+})
+
+promise.catch(reason => {
+  // обробка відхилення
+  console.error(reason)    // 'error!'
+})
+
+// те саме що й:
+
+promise.then(null, reason => {
+  console.error(reason)     // 'error!'
+})

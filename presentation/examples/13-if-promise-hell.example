@@ -1,0 +1,8 @@
+doSomething(1)
+  .then(value => {
+    console.log(value)         // 1
+    return doSomething(2)      // як повернути значення з проміса?
+  })
+  .then(value => {
+    console.log(value);        // ??? Promise { <pending> } ???
+  });
