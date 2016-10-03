@@ -14,7 +14,7 @@
   "author": "Denys Dovhan <email@denysdovhan.com> (http://denysdovhan.com)",
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "4.2.0",
+    "normalize.css": "5.0.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "spectacle": "^1.0.0"
