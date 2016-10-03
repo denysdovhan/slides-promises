@@ -14,14 +14,14 @@
   "author": "Denys Dovhan <email@denysdovhan.com> (http://denysdovhan.com)",
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "4.2.0",
+    "normalize.css": "5.0.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "spectacle": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
-    "babel-core": "^6.17.0",
+    "babel-core": "^6.4.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.1",
     "babel-plugin-react-transform": "^2.0.2",
