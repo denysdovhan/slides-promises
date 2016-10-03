@@ -14,7 +14,7 @@
   "author": "Denys Dovhan <email@denysdovhan.com> (http://denysdovhan.com)",
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "5.0.0",
+    "normalize.css": "4.2.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "spectacle": "^1.0.0"
@@ -32,7 +32,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "cross-env": "^2.0.0",
     "css-loader": "^0.25.0",
-    "eslint": "^3.3.0",
+    "eslint": "^3.7.1",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-react": "^6.1.0",
