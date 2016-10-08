@@ -17,7 +17,7 @@
     "normalize.css": "4.2.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "spectacle": "^1.2.5"
+    "spectacle": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
@@ -30,7 +30,7 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-0": "^6.3.13",
-    "cross-env": "^2.0.0",
+    "cross-env": "^3.1.2",
     "css-loader": "^0.25.0",
     "eslint": "^3.3.0",
     "eslint-config-defaults": "^9.0.0",
