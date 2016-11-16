@@ -16,7 +16,7 @@
   "dependencies": {
     "normalize.css": "5.0.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1",
+    "react-dom": "^15.4.0",
     "spectacle": "^1.0.0"
   },
   "devDependencies": {
@@ -32,7 +32,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "cross-env": "^2.0.0",
     "css-loader": "^0.25.0",
-    "eslint": "^3.10.2",
+    "eslint": "^3.6.1",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-react": "^6.1.0",
