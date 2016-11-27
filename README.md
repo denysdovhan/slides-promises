@@ -10,5 +10,9 @@
 * `npm lint` — check all files via [ESLint](eslint.org)
 * `npm clean` — clean `dist` folder
 
+## License
+
+MIT © [Denys Dovhan](http://denysdovhan.com)
+
 [travis-url]: https://travis-ci.org/denysdovhan/slides-promises
 [travis-image]: https://img.shields.io/travis/denysdovhan/slides-promises.svg?style=flat-square
