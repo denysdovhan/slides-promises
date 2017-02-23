@@ -1,5 +1,7 @@
 # slides-promises [![Build Status][travis-image]][travis-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/denysdovhan/slides-promises.svg)](https://greenkeeper.io/)
+
 > Slides for my talk about Promises
 
 ## Scripts
