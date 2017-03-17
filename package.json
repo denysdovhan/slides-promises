@@ -32,7 +32,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "cross-env": "^3.1.4",
     "css-loader": "^0.27.1",
-    "eslint": "^3.6.1",
+    "eslint": "^3.18.0",
     "eslint-config-defaults": "^9.0.0",
     "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-react": "^6.1.0",
