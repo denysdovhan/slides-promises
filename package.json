@@ -46,7 +46,7 @@
     "raw-loader": "^0.5.1",
     "react-transform-hmr": "^1.0.4",
     "rimraf": "^2.4.4",
-    "style-loader": "^0.14.0",
+    "style-loader": "^0.15.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.8",
     "webpack-dev-middleware": "^1.2.0",
